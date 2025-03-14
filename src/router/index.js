@@ -82,6 +82,12 @@ export default new Router({
       props: true
     },
     {
+      name: 'Tracking',
+      path: '/:f/:c/index/:tracking(unsure|unproduce|produced|producing|packing|delivered|statistics)',
+      component: Read,
+      props: true
+    },
+    {
       name: 'OrderDetail',
       path: '/order/order_detail',
       component: () => import(/* webpackChunkName: "order_detail" */ '@/views/order/detail/OrderDetail')

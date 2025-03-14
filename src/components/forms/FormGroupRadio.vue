@@ -1,5 +1,6 @@
 <template>
   <div v-if="radioData.length || radioData.num" >
+    <label :for="id">{{ configs.label }}<span v-if="required">*</span></label>
     <div v-for="(value, key, index) in radioData.content" :key="index" class="form-check">
       <input class="form-check-input" type="radio" :name="configs.name" :id="generateId(key)" v-model="radioValue" :value="value.v" :readonly="readonly" :required="required" :multiple="multiple" :max="max" :min="min" :maxlength="maxlength" :pattern="pattern"  />
       <label class="form-check-label" :for="generateId(key)">{{ value.label || value.name || value.v }}</label>

@@ -16,7 +16,7 @@
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item d-flex justify-content-between align-items-center" v-for="(list, key, index) in lists" :key="index">
-          {{ list.name }}
+          <span v-html="list.name"></span>
           <span class="badge badge-dark badge-pill">{{ list.value }}</span>
         </li>
       </ul>

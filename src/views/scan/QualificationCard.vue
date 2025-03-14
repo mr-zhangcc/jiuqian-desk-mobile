@@ -69,7 +69,11 @@ export default {
           this.scanning = this.card.data.content.filter(__ => {
             return __.qrcode === this.pageSearchValues.qrcode
           })[0]
-          this.speak()
+          if (this.scanning['qualifier'] === null) {
+            this.fetchData()
+          } else {
+            this.speak()
+          }
         }
       }
     },
@@ -92,7 +96,7 @@ export default {
       this.$bar.start()
       // this.loading = true
       this.error = false
-      this.$store.dispatch('FETCH_ACC_DATA', {
+      this.$store.dispatch('FETCH_DATA', {
         url: this.card.url,
         configs: {
           params: {
@@ -108,7 +112,10 @@ export default {
           // this.error = true
           this.setNonExist()
         } else {
-          this.scanning = res.contents.content[0]
+          // this.scanning = res.contents.content[0]
+          this.scanning = res.contents.content.filter(__ => {
+            return __.qrcode === this.pageSearchValues.qrcode
+          })[0]
           this.speak()
         }
       }).catch(err => {
